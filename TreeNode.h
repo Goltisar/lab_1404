@@ -1,11 +1,11 @@
 #pragma once
-template <typename T>
+
 class TreeNode
 {
 public:
     TreeNode();
-    TreeNode(const T);
-    T get_data() const { return data; }
+    TreeNode(const int);
+    int get_data() const { return data; }
     TreeNode* get_left() const { return left; }
     TreeNode* get_right() const { return right; }
     TreeNode* get_parent() const { return parent; }
@@ -16,19 +16,18 @@ private:
     TreeNode* left;
     TreeNode* right;
     TreeNode* parent;
-    T data;
+    int data;
 };
 
-template<typename T>
-TreeNode <T>::TreeNode()
+
+inline TreeNode::TreeNode()
 {
-    data = T();
+    data = 0;
     left = right = nullptr;
     parent = nullptr;
 }
 
-template<typename T>
-TreeNode <T>::TreeNode(const T iData)
+inline TreeNode::TreeNode(const int iData)
 {
     data = iData;
     left = right = nullptr;

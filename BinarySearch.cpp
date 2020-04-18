@@ -8,12 +8,15 @@ void TestMinimalBinaryTree()
 {
     const int n = 9;
     int arr[n] = { -5, -2, 0, 5, 9, 14, 20, 23, 90 };
-    CreateMinimalBST(arr, 0, n-1);
+    BinaryTree tree = BinaryTree();
+    tree.set_root(CreateMinimalBST(arr, 0, n-1));
+    cout << "MinimalBinaryTree: " << endl;
+    tree.printTree(tree.get_root());
 }
 
 void TestBinaryTree()
 {
-    BinaryTree<int> tree = BinaryTree<int>(4);
+    BinaryTree tree = BinaryTree(4);
     tree.insert(2);
     tree.insert(11);
     tree.insert(5);
@@ -26,7 +29,9 @@ void TestBinaryTree()
 
 int main()
 {
+    // First task
     TestBinaryTree();
+    // Second task
     TestMinimalBinaryTree();
 }
 

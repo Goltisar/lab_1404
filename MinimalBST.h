@@ -1,23 +1,14 @@
 #pragma once
 #include "BinaryTree.h"
 
-template<typename T>
-void CreateMinimalBST(T* arr, int start, int end)
-{
-	BinaryTree<T> tree = BinaryTree<T>(arr[(start + end) / 2]);
-	CreateNodes(arr, start, end, &tree);
-	std::cout << "MinimalBST: " << std::endl;
-	tree.printTree(tree.get_root());
-	std::cout << std::endl;
-}
-
-template<typename T>
-void CreateNodes(T* arr, int start, int end, BinaryTree<T>* tree)
+TreeNode* CreateMinimalBST(int* arr, int start, int end)
 {
 	if (end < start)
-		return;
+		return nullptr;
 	int midIndex = (start + end) / 2;
-	tree->insert(arr[midIndex]);
-	CreateNodes(arr, start, midIndex - 1, tree);
-	CreateNodes(arr, midIndex + 1, end, tree);
+	TreeNode* node = new TreeNode(arr[midIndex]);
+	node->set_left(CreateMinimalBST(arr, start, midIndex - 1));
+	node->set_right(CreateMinimalBST(arr, midIndex + 1, end));
+	return node;
 }
+
